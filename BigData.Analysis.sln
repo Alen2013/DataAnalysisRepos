@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.UI", "BigData.Analysis.UI\BigData.Analysis.UI\BigData.Analysis.UI.csproj", "{D9F8420A-B224-4684-9E81-2A8D94DF5804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.BLL", "BigData.Analysis.BLL\BigData.Analysis.BLL.csproj", "{0AC69A6C-B3E9-4287-9EC1-3FE6EFC4FFD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.DAL", "BigData.Analysis.DAL\BigData.Analysis.DAL.csproj", "{3B43DE05-1352-4E39-99C7-44F07C73CCE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.IDAL", "BigData.Analysis.IDAL\BigData.Analysis.IDAL.csproj", "{77C13453-749B-4417-A4F0-05B0A09F2AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.Model", "BigData.Analysis.Model\BigData.Analysis.Model.csproj", "{66D8817C-FF23-4A1B-A423-F6754FF1C7B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigData.Analysis.IBLL", "BigData.Analysis.IBLL\BigData.Analysis.IBLL.csproj", "{421AB925-0B16-4C1A-B71B-9E38938411F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9F8420A-B224-4684-9E81-2A8D94DF5804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F8420A-B224-4684-9E81-2A8D94DF5804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F8420A-B224-4684-9E81-2A8D94DF5804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F8420A-B224-4684-9E81-2A8D94DF5804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC69A6C-B3E9-4287-9EC1-3FE6EFC4FFD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC69A6C-B3E9-4287-9EC1-3FE6EFC4FFD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC69A6C-B3E9-4287-9EC1-3FE6EFC4FFD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC69A6C-B3E9-4287-9EC1-3FE6EFC4FFD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B43DE05-1352-4E39-99C7-44F07C73CCE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B43DE05-1352-4E39-99C7-44F07C73CCE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B43DE05-1352-4E39-99C7-44F07C73CCE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B43DE05-1352-4E39-99C7-44F07C73CCE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C13453-749B-4417-A4F0-05B0A09F2AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C13453-749B-4417-A4F0-05B0A09F2AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C13453-749B-4417-A4F0-05B0A09F2AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C13453-749B-4417-A4F0-05B0A09F2AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D8817C-FF23-4A1B-A423-F6754FF1C7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D8817C-FF23-4A1B-A423-F6754FF1C7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D8817C-FF23-4A1B-A423-F6754FF1C7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D8817C-FF23-4A1B-A423-F6754FF1C7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421AB925-0B16-4C1A-B71B-9E38938411F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421AB925-0B16-4C1A-B71B-9E38938411F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421AB925-0B16-4C1A-B71B-9E38938411F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421AB925-0B16-4C1A-B71B-9E38938411F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

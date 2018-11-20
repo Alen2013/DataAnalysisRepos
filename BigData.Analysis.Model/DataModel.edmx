@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="UserInfoSet" EntityType="DataModel.Store.UserInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleSet" EntityType="DataModel.Store.RoleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MachineOutputSet" EntityType="DataModel.Store.MachineOutputSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BadInfoSet" EntityType="DataModel.Store.BadInfoSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RoleUserInfo" Association="DataModel.Store.RoleUserInfo">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="UserInfo" EntitySet="UserInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="MachineOutputBadInfo" Association="DataModel.Store.MachineOutputBadInfo">
+      <End Role="MachineOutput" EntitySet="MachineOutputSet" />
+      <End Role="BadInfo" EntitySet="BadInfoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="UserPwd" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="CardId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="ComGroup" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MachineOutputSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineType" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="TotalOutput" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Group" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BadInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BadClass" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nums" Type="bigint" Nullable="false" />
+    <Property Name="BadExplain" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Analysis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReasonClass" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RepairMan" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MachineOutputId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RoleUserInfo">
+    <End Role="Role" Type="DataModel.Store.RoleSet" Multiplicity="1" />
+    <End Role="UserInfo" Type="DataModel.Store.UserInfoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineOutputBadInfo">
+    <End Role="MachineOutput" Type="DataModel.Store.MachineOutputSet" Multiplicity="1" />
+    <End Role="BadInfo" Type="DataModel.Store.BadInfoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MachineOutput">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BadInfo">
+        <PropertyRef Name="MachineOutputId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserInfoSet" EntityType="DataModel.UserInfo" />
+          <EntitySet Name="RoleSet" EntityType="DataModel.Role" />
+          <EntitySet Name="MachineOutputSet" EntityType="DataModel.MachineOutput" />
+          <EntitySet Name="BadInfoSet" EntityType="DataModel.BadInfo" />
+          <AssociationSet Name="RoleUserInfo" Association="DataModel.RoleUserInfo">
+            <End Role="Role" EntitySet="RoleSet" />
+            <End Role="UserInfo" EntitySet="UserInfoSet" />
+          </AssociationSet>
+          <AssociationSet Name="MachineOutputBadInfo" Association="DataModel.MachineOutputBadInfo">
+            <End Role="MachineOutput" EntitySet="MachineOutputSet" />
+            <End Role="BadInfo" EntitySet="BadInfoSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="UserPwd" Type="String" Nullable="false" MaxLength="16" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="DataModel.RoleUserInfo" FromRole="UserInfo" ToRole="Role" />
+          <Property Name="CardId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="32" />
+          <NavigationProperty Name="UserInfo" Relationship="DataModel.RoleUserInfo" FromRole="Role" ToRole="UserInfo" />
+          <Property Name="ComGroup" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MachineOutput">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineType" Type="String" Nullable="false" MaxLength="15" />
+          <Property Name="TotalOutput" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="Group" Type="String" Nullable="false" />
+          <Property Name="ProductType" Type="String" Nullable="false" />
+          <NavigationProperty Name="BadInfo" Relationship="DataModel.MachineOutputBadInfo" FromRole="MachineOutput" ToRole="BadInfo" />
+        </EntityType>
+        <EntityType Name="BadInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BadClass" Type="String" Nullable="false" />
+          <Property Name="Nums" Type="Int64" Nullable="false" />
+          <Property Name="BadExplain" Type="String" Nullable="false" />
+          <Property Name="Analysis" Type="String" Nullable="false" />
+          <Property Name="ReasonClass" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="RepairMan" Type="String" Nullable="false" />
+          <Property Name="MachineOutputId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MachineOutput" Relationship="DataModel.MachineOutputBadInfo" FromRole="BadInfo" ToRole="MachineOutput" />
+        </EntityType>
+        <Association Name="RoleUserInfo">
+          <End Type="DataModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DataModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MachineOutputBadInfo">
+          <End Type="DataModel.MachineOutput" Role="MachineOutput" Multiplicity="1" />
+          <End Type="DataModel.BadInfo" Role="BadInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MachineOutput">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BadInfo">
+              <PropertyRef Name="MachineOutputId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="UserInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.UserInfo)">
+        <MappingFragment StoreEntitySet="UserInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Role)">
+        <MappingFragment StoreEntitySet="RoleSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ComGroup" ColumnName="ComGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MachineOutputSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.MachineOutput)">
+        <MappingFragment StoreEntitySet="MachineOutputSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="TotalOutput" ColumnName="TotalOutput" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BadInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.BadInfo)">
+        <MappingFragment StoreEntitySet="BadInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BadClass" ColumnName="BadClass" />
+          <ScalarProperty Name="Nums" ColumnName="Nums" />
+          <ScalarProperty Name="BadExplain" ColumnName="BadExplain" />
+          <ScalarProperty Name="Analysis" ColumnName="Analysis" />
+          <ScalarProperty Name="ReasonClass" ColumnName="ReasonClass" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="RepairMan" ColumnName="RepairMan" />
+          <ScalarProperty Name="MachineOutputId" ColumnName="MachineOutputId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
