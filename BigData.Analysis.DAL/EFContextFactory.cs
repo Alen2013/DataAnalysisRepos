@@ -27,7 +27,7 @@ namespace BigData.Analysis.DAL
                 //我们在创建一个，放在数据槽中去
                 CallContext.SetData("DbContext", dbContext);
             }
-
+            dbContext.Configuration.ProxyCreationEnabled = false;
             return dbContext;
         }
     }

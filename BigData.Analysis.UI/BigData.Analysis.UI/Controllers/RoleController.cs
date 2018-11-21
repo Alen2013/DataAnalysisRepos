@@ -19,7 +19,6 @@ namespace BigData.Analysis.UI.Controllers
 
         public ActionResult GetAllRole()
         {
-            //fggf 
             int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);  
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             int total = 0;
