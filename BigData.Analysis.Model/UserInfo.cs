@@ -19,6 +19,8 @@ namespace BigData.Analysis.Model
         public string UserPwd { get; set; }
         public int RoleId { get; set; }
         public string CardId { get; set; }
+        public string Group { get; set; }
+        public string Phone { get; set; }
     
         public virtual Role Role { get; set; }
     }

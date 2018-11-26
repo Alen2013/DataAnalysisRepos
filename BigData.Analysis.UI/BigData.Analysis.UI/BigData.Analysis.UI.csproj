@@ -768,6 +768,10 @@
       <Project>{0ac69a6c-b3e9-4287-9ec1-3fe6efc4ffd6}</Project>
       <Name>BigData.Analysis.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\BigData.Analysis.Common\BigData.Analysis.Common.csproj">
+      <Project>{07104d62-24a0-496b-99fb-94e3beaa5d0f}</Project>
+      <Name>BigData.Analysis.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\BigData.Analysis.IBLL\BigData.Analysis.IBLL.csproj">
       <Project>{421ab925-0b16-4c1a-b71b-9e38938411f9}</Project>
       <Name>BigData.Analysis.IBLL</Name>

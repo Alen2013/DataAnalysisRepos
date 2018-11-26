@@ -28,6 +28,8 @@
     <Property Name="UserPwd" Type="nvarchar" Nullable="false" MaxLength="16" />
     <Property Name="RoleId" Type="int" Nullable="false" />
     <Property Name="CardId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Group" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="RoleSet">
     <Key>
@@ -114,6 +116,8 @@
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="DataModel.RoleUserInfo" FromRole="UserInfo" ToRole="Role" />
           <Property Name="CardId" Type="String" Nullable="false" />
+          <Property Name="Group" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -189,6 +193,8 @@
           <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="CardId" ColumnName="CardId" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

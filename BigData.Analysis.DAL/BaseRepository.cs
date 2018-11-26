@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BigData.Analysis.Model;
+using System.Linq.Expressions;
 
 namespace BigData.Analysis.DAL
 {
@@ -59,7 +60,7 @@ namespace BigData.Analysis.DAL
         }
 
         //实现对数据库的查询 --简单查询
-        public IQueryable<T> LoadEntities(Func<T, bool> whereLambda)
+        public IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda)
         {
             //EF4.0
             //return db.CreateObjectSet<T>().Where<T>(whereLambda).AsQueryable();
@@ -79,7 +80,7 @@ namespace BigData.Analysis.DAL
         ///<param name="isAsc">升序or倒序</param>
         ///<param name="orderByLambda">根据哪个字段排序</param>
         ///<returns></returns>
-        public IQueryable<T> LoadPageEntities<S>(int pageIndex, int pageSize, out int total, Func<T, bool>whereLambda, bool isAsc, Func<T, S> orderByLambda)
+        public IQueryable<T> LoadPageEntities<S>(int pageIndex, int pageSize, out int total, Expression<Func<T, bool>>whereLambda, bool isAsc, Expression<Func<T, S>> orderByLambda)
         {
             var temp = db.Set<T>().Where<T>(whereLambda);
             total = temp.Count();

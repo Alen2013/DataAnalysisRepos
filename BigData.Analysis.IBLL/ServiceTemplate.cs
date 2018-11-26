@@ -1,6 +1,7 @@
 ﻿  //引进TT模板的命名空间
 using System.Data.Objects;
 using BigData.Analysis.Model;
+using BigData.Analysis.Common;
 
 namespace BigData.Analysis.IBLL
 {
@@ -20,6 +21,8 @@ namespace BigData.Analysis.IBLL
 		public interface  IUserInfoService : IBaseService<UserInfo>
 		{
 
+        //在这里添加一个用户登录信息的约束
+            LoginResult CheckUserInfo(UserInfo userInfo);
 		}
 
 }

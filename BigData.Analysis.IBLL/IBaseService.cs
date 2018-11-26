@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,9 @@ namespace BigData.Analysis.IBLL
 
         bool DeleteEntity(T entity);
 
-        IQueryable<T> LoadEntities(Func<T, bool> whereLambda);
+        IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda);
 
-        IQueryable<T> LoadPageEntities<S>(int pageIndex, int pageSize, out int total, Func<T, bool> whereLambda, bool isAsc, Func<T, S> orderByLambda);
+        IQueryable<T> LoadPageEntities<S>(int pageIndex, int pageSize, out int total, Expression<Func<T, bool>> whereLambda, bool isAsc, Expression<Func<T, S>> orderByLambda);
 
     }
 }

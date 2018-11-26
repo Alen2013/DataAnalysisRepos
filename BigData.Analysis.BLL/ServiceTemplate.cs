@@ -1,5 +1,6 @@
-﻿  //引进TT模板的命名空间
+﻿//引进TT模板的命名空间
 //using System.Data.Objects;
+using BigData.Analysis.DAL;
 using BigData.Analysis.IBLL;
 using BigData.Analysis.Model;
 

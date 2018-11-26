@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BigData.Analysis.Common\BigData.Analysis.Common.csproj">
+      <Project>{07104d62-24a0-496b-99fb-94e3beaa5d0f}</Project>
+      <Name>BigData.Analysis.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BigData.Analysis.DAL\BigData.Analysis.DAL.csproj">
       <Project>{3b43de05-1352-4e39-99c7-44f07c73cce4}</Project>
       <Name>BigData.Analysis.DAL</Name>
