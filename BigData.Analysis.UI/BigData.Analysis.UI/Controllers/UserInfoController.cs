@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using BigData.Analysis.IBLL;
 using BigData.Analysis.BLL;
+using BigData.Analysis.Model;
+using BigData.Analysis.Common;
+
 
 
 namespace BigData.Analysis.UI.Controllers
@@ -27,6 +30,24 @@ namespace BigData.Analysis.UI.Controllers
 
             var result = new { total = total, rows = data };
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RegisterUser(UserInfo userInfo)
+        {
+            // UserInfo user = Session["UserInfo"] as UserInfo;
+           
+            _userInfoService.AddEntity(userInfo);
+            return Content("OK");
+        }
+
+        public ActionResult CheckUserID(string UserID)
+        {
+            var checkUserID = _userInfoService.CheckUserID(UserID);
+            if(checkUserID == LoginResult.OK)
+            {
+                return Content("error");
+            }
+            return Content("OK");
         }
     }
 }

@@ -13,6 +13,23 @@ namespace BigData.Analysis.BLL
 {
     public partial class UserInfoService:BaseService<UserInfo>, IUserInfoService
     {
+        public LoginResult CheckUserID(string UserID)
+        {
+            if(string.IsNullOrEmpty(UserID))
+            {
+                return LoginResult.UserIsNull;
+            }
+
+            var checkUserID = _DbSession.UserInfoRepository.LoadEntities(u => u.CardId == UserID).FirstOrDefault();
+            if(checkUserID != null)
+            {
+                return LoginResult.UserExist;
+            }
+            else
+            {
+                return LoginResult.OK;
+            }
+        }
 
         public LoginResult CheckUserInfo(UserInfo userInfo)
         {

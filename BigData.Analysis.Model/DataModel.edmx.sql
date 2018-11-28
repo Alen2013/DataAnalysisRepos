@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/27/2018 10:08:30
+-- Date Created: 11/28/2018 16:32:38
 -- Generated from EDMX file: C:\Users\Administrator\Source\Repos\DataAnalysisRepos\BigData.Analysis.Model\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_RoleUserInfo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserInfoSet] DROP CONSTRAINT [FK_RoleUserInfo];
-GO
 IF OBJECT_ID(N'[dbo].[FK_MachineOutputBadInfo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BadInfoSet] DROP CONSTRAINT [FK_MachineOutputBadInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserInfoUser_Role]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User_RoleSet] DROP CONSTRAINT [FK_UserInfoUser_Role];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoleUser_Role]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User_RoleSet] DROP CONSTRAINT [FK_RoleUser_Role];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActionInfoRole_ActionInfo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActionInfoRole] DROP CONSTRAINT [FK_ActionInfoRole_ActionInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActionInfoRole_Role]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActionInfoRole] DROP CONSTRAINT [FK_ActionInfoRole_Role];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserInfoUser_Action]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User_ActionSet] DROP CONSTRAINT [FK_UserInfoUser_Action];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActionInfoUser_Action]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User_ActionSet] DROP CONSTRAINT [FK_ActionInfoUser_Action];
 GO
 
 -- --------------------------------------------------
@@ -40,6 +55,18 @@ GO
 IF OBJECT_ID(N'[dbo].[BadInfoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BadInfoSet];
 GO
+IF OBJECT_ID(N'[dbo].[User_RoleSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[User_RoleSet];
+GO
+IF OBJECT_ID(N'[dbo].[ActionInfoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActionInfoSet];
+GO
+IF OBJECT_ID(N'[dbo].[User_ActionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[User_ActionSet];
+GO
+IF OBJECT_ID(N'[dbo].[ActionInfoRole]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActionInfoRole];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -50,10 +77,10 @@ CREATE TABLE [dbo].[UserInfoSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(32)  NOT NULL,
     [UserPwd] nvarchar(16)  NOT NULL,
-    [RoleId] int  NOT NULL,
+    [RoleId] int  NULL,
     [CardId] nvarchar(max)  NOT NULL,
-    [Group] nvarchar(max)  NOT NULL,
-    [Phone] nvarchar(max)  NOT NULL
+    [Group] nvarchar(max)  NULL,
+    [Phone] nvarchar(max)  NULL
 );
 GO
 

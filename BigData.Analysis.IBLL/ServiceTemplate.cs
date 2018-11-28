@@ -23,6 +23,7 @@ namespace BigData.Analysis.IBLL
 
         //在这里添加一个用户登录信息的约束
             LoginResult CheckUserInfo(UserInfo userInfo);
+            LoginResult CheckUserID(string UserID);
 		}
 
 }

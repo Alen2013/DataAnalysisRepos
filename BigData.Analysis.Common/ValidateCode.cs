@@ -252,5 +252,6 @@ namespace BigData.Analysis.Common
         UserIsNull,
         PwdIsNull,
         OK,
+        UserExist
     }
 }

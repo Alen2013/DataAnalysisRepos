@@ -24,7 +24,7 @@ namespace BigData.Analysis.Model
         public int Id { get; set; }
         public string UserName { get; set; }
         public string UserPwd { get; set; }
-        public int RoleId { get; set; }
+        public Nullable<int> RoleId { get; set; }
         public string CardId { get; set; }
         public string Group { get; set; }
         public string Phone { get; set; }

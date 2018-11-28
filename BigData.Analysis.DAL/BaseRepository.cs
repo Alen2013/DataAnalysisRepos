@@ -31,7 +31,7 @@ namespace BigData.Analysis.DAL
             return entity;
         }
 
-        //实现数据库的修改功能
+        //实现数据库的修改功能 
         public bool UpdateEntity(T entity)
         {
             //EF4.0的写法
