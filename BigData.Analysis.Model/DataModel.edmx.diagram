@@ -5,12 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5af9b6fb7ed94ec4a31996349dd5f7f9" Name="Diagram1" >
-        <EntityTypeShape EntityType="DataModel.UserInfo" Width="1.5" PointX="5.5" PointY="4.375" />
-        <EntityTypeShape EntityType="DataModel.Role" Width="1.5" PointX="10.625" PointY="4" />
-        <EntityTypeShape EntityType="DataModel.MachineOutput" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="DataModel.BadInfo" Width="1.5" PointX="3" PointY="1" />
-        <AssociationConnector Association="DataModel.RoleUserInfo" />
+        <EntityTypeShape EntityType="DataModel.UserInfo" Width="1.5" PointX="6.25" PointY="3.25" />
+        <EntityTypeShape EntityType="DataModel.Role" Width="1.5" PointX="11.625" PointY="5.625" />
+        <EntityTypeShape EntityType="DataModel.MachineOutput" Width="1.5" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.BadInfo" Width="1.5" PointX="2.75" PointY="0.5" />
         <AssociationConnector Association="DataModel.MachineOutputBadInfo" />
+        <EntityTypeShape EntityType="DataModel.User_Role" Width="1.5" PointX="8.875" PointY="5.75" />
+        <AssociationConnector Association="DataModel.UserInfoUser_Role" />
+        <AssociationConnector Association="DataModel.RoleUser_Role" />
+        <EntityTypeShape EntityType="DataModel.ActionInfo" Width="1.5" PointX="11.5" PointY="1.625" />
+        <AssociationConnector Association="DataModel.ActionInfoRole" />
+        <EntityTypeShape EntityType="DataModel.User_Action" Width="1.5" PointX="9.125" PointY="1.625" />
+        <AssociationConnector Association="DataModel.UserInfoUser_Action" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.ActionInfoUser_Action" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

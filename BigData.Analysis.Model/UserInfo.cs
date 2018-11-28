@@ -14,6 +14,13 @@ namespace BigData.Analysis.Model
     
     public partial class UserInfo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserInfo()
+        {
+            this.User_Role = new HashSet<User_Role>();
+            this.User_Action = new HashSet<User_Action>();
+        }
+    
         public int Id { get; set; }
         public string UserName { get; set; }
         public string UserPwd { get; set; }
@@ -22,6 +29,9 @@ namespace BigData.Analysis.Model
         public string Group { get; set; }
         public string Phone { get; set; }
     
-        public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Role> User_Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Action> User_Action { get; set; }
     }
 }

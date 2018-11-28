@@ -29,5 +29,8 @@ namespace BigData.Analysis.Model
         public virtual DbSet<Role> RoleSet { get; set; }
         public virtual DbSet<MachineOutput> MachineOutputSet { get; set; }
         public virtual DbSet<BadInfo> BadInfoSet { get; set; }
+        public virtual DbSet<User_Role> User_RoleSet { get; set; }
+        public virtual DbSet<ActionInfo> ActionInfoSet { get; set; }
+        public virtual DbSet<User_Action> User_ActionSet { get; set; }
     }
 }

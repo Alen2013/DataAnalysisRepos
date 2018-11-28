@@ -12,23 +12,22 @@ namespace BigData.Analysis.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class ActionInfo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public ActionInfo()
         {
-            this.User_Role = new HashSet<User_Role>();
-            this.ActionInfo = new HashSet<ActionInfo>();
+            this.Role = new HashSet<Role>();
+            this.User_Action = new HashSet<User_Action>();
         }
     
         public int Id { get; set; }
-        public string RoleName { get; set; }
-        public string ComGroup { get; set; }
-        public string RoleType { get; set; }
+        public string Url { get; set; }
+        public string ActionName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Role> User_Role { get; set; }
+        public virtual ICollection<Role> Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActionInfo> ActionInfo { get; set; }
+        public virtual ICollection<User_Action> User_Action { get; set; }
     }
 }

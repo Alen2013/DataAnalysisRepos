@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/26/2018 10:47:06
+-- Date Created: 11/27/2018 10:08:30
 -- Generated from EDMX file: C:\Users\Administrator\Source\Repos\DataAnalysisRepos\BigData.Analysis.Model\DataModel.edmx
 -- --------------------------------------------------
 
@@ -61,7 +61,8 @@ GO
 CREATE TABLE [dbo].[RoleSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [RoleName] nvarchar(32)  NOT NULL,
-    [ComGroup] nvarchar(max)  NOT NULL
+    [ComGroup] nvarchar(max)  NOT NULL,
+    [RoleType] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -87,6 +88,38 @@ CREATE TABLE [dbo].[BadInfoSet] (
     [Date] nvarchar(max)  NOT NULL,
     [RepairMan] nvarchar(max)  NOT NULL,
     [MachineOutputId] int  NOT NULL
+);
+GO
+
+-- Creating table 'User_RoleSet'
+CREATE TABLE [dbo].[User_RoleSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserInfoId] int  NOT NULL,
+    [RoleId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ActionInfoSet'
+CREATE TABLE [dbo].[ActionInfoSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Url] nvarchar(max)  NOT NULL,
+    [ActionName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'User_ActionSet'
+CREATE TABLE [dbo].[User_ActionSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [HasPermission] nvarchar(max)  NOT NULL,
+    [UserInfoId] int  NOT NULL,
+    [ActionInfoId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ActionInfoRole'
+CREATE TABLE [dbo].[ActionInfoRole] (
+    [ActionInfo_Id] int  NOT NULL,
+    [Role_Id] int  NOT NULL
 );
 GO
 
@@ -118,24 +151,33 @@ ADD CONSTRAINT [PK_BadInfoSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'User_RoleSet'
+ALTER TABLE [dbo].[User_RoleSet]
+ADD CONSTRAINT [PK_User_RoleSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ActionInfoSet'
+ALTER TABLE [dbo].[ActionInfoSet]
+ADD CONSTRAINT [PK_ActionInfoSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'User_ActionSet'
+ALTER TABLE [dbo].[User_ActionSet]
+ADD CONSTRAINT [PK_User_ActionSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [ActionInfo_Id], [Role_Id] in table 'ActionInfoRole'
+ALTER TABLE [dbo].[ActionInfoRole]
+ADD CONSTRAINT [PK_ActionInfoRole]
+    PRIMARY KEY CLUSTERED ([ActionInfo_Id], [Role_Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [RoleId] in table 'UserInfoSet'
-ALTER TABLE [dbo].[UserInfoSet]
-ADD CONSTRAINT [FK_RoleUserInfo]
-    FOREIGN KEY ([RoleId])
-    REFERENCES [dbo].[RoleSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RoleUserInfo'
-CREATE INDEX [IX_FK_RoleUserInfo]
-ON [dbo].[UserInfoSet]
-    ([RoleId]);
-GO
 
 -- Creating foreign key on [MachineOutputId] in table 'BadInfoSet'
 ALTER TABLE [dbo].[BadInfoSet]
@@ -150,6 +192,90 @@ GO
 CREATE INDEX [IX_FK_MachineOutputBadInfo]
 ON [dbo].[BadInfoSet]
     ([MachineOutputId]);
+GO
+
+-- Creating foreign key on [UserInfoId] in table 'User_RoleSet'
+ALTER TABLE [dbo].[User_RoleSet]
+ADD CONSTRAINT [FK_UserInfoUser_Role]
+    FOREIGN KEY ([UserInfoId])
+    REFERENCES [dbo].[UserInfoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserInfoUser_Role'
+CREATE INDEX [IX_FK_UserInfoUser_Role]
+ON [dbo].[User_RoleSet]
+    ([UserInfoId]);
+GO
+
+-- Creating foreign key on [RoleId] in table 'User_RoleSet'
+ALTER TABLE [dbo].[User_RoleSet]
+ADD CONSTRAINT [FK_RoleUser_Role]
+    FOREIGN KEY ([RoleId])
+    REFERENCES [dbo].[RoleSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoleUser_Role'
+CREATE INDEX [IX_FK_RoleUser_Role]
+ON [dbo].[User_RoleSet]
+    ([RoleId]);
+GO
+
+-- Creating foreign key on [ActionInfo_Id] in table 'ActionInfoRole'
+ALTER TABLE [dbo].[ActionInfoRole]
+ADD CONSTRAINT [FK_ActionInfoRole_ActionInfo]
+    FOREIGN KEY ([ActionInfo_Id])
+    REFERENCES [dbo].[ActionInfoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Role_Id] in table 'ActionInfoRole'
+ALTER TABLE [dbo].[ActionInfoRole]
+ADD CONSTRAINT [FK_ActionInfoRole_Role]
+    FOREIGN KEY ([Role_Id])
+    REFERENCES [dbo].[RoleSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActionInfoRole_Role'
+CREATE INDEX [IX_FK_ActionInfoRole_Role]
+ON [dbo].[ActionInfoRole]
+    ([Role_Id]);
+GO
+
+-- Creating foreign key on [UserInfoId] in table 'User_ActionSet'
+ALTER TABLE [dbo].[User_ActionSet]
+ADD CONSTRAINT [FK_UserInfoUser_Action]
+    FOREIGN KEY ([UserInfoId])
+    REFERENCES [dbo].[UserInfoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserInfoUser_Action'
+CREATE INDEX [IX_FK_UserInfoUser_Action]
+ON [dbo].[User_ActionSet]
+    ([UserInfoId]);
+GO
+
+-- Creating foreign key on [ActionInfoId] in table 'User_ActionSet'
+ALTER TABLE [dbo].[User_ActionSet]
+ADD CONSTRAINT [FK_ActionInfoUser_Action]
+    FOREIGN KEY ([ActionInfoId])
+    REFERENCES [dbo].[ActionInfoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActionInfoUser_Action'
+CREATE INDEX [IX_FK_ActionInfoUser_Action]
+ON [dbo].[User_ActionSet]
+    ([ActionInfoId]);
 GO
 
 -- --------------------------------------------------

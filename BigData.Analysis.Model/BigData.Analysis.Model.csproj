@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionInfo.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BadInfo.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -77,6 +80,12 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Action.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Role.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
